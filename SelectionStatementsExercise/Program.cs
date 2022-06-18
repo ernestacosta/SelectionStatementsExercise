@@ -6,25 +6,32 @@ namespace SelectionStatementsExercise
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to the number guessing game!");
-            Console.WriteLine("Pick a number from 1 to 1000!");
-            int favNumber = 200;
-            int userGuess = int.Parse(Console.ReadLine());
+            var r = new Random();
+            var favNumber = r.Next(0, 1001);
+            int userInput;
 
+            do
+            {
 
+                Console.WriteLine("Welcome to the number guessing game!");
+                Console.WriteLine("Pick a number from 1 - 1000");
+                userInput = int.Parse(Console.ReadLine());
 
-            if (userGuess == favNumber)
-            {
-                Console.WriteLine($"Correct!");
-            }
-            else if (userGuess > favNumber)
-            {
-                Console.WriteLine($"Too High! Try again!");
-            }
-            else
-            {
-                Console.WriteLine($"Too low! Try again");
-            }
+                if (userInput < favNumber)
+                {
+                    Console.WriteLine($"{userInput} is too low, LOSER!");
+                }
+
+                else if (userInput > favNumber)
+                {
+                    Console.WriteLine($"{userInput} is too high, LOSER");
+                }
+
+                else
+                {
+                    Console.WriteLine("You guessed it!");
+                }
+            } while (favNumber != userInput);
 
             //string subject = "c#";
 
